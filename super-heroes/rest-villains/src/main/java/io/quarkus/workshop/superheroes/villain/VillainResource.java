@@ -2,6 +2,7 @@ package io.quarkus.workshop.superheroes.villain;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,13 +22,8 @@ import org.jboss.resteasy.reactive.RestPath;
 @Path("/api/villains")
 public class VillainResource {
 
-	Logger logger;
-	VillainService service;
-	
-	public VillainResource(Logger logger, VillainService service) {
-		this.service = service;
-		this.logger = logger;
-	}
+	@Inject Logger logger;
+	@Inject VillainService service;
 	
     @GET
     public Response getAllVillains() {
