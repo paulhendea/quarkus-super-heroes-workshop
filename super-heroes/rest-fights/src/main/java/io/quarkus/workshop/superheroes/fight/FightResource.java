@@ -12,6 +12,8 @@ import javax.ws.rs.core.UriInfo;
 
 import java.util.List;
 
+import org.eclipse.microprofile.faulttolerance.Timeout;
+
 @Path("api/fights")
 public class FightResource {
     
@@ -39,7 +41,8 @@ public class FightResource {
     }
 
     @GET
-    @Path("/randomFighters")
+    @Path("/randomfighters")
+    @Timeout(1000)
     public Response getRandomfighters() {
         Fighters fighters = service.findRandomFighters();
         logger.debug("Get random fighters " + fighters);
