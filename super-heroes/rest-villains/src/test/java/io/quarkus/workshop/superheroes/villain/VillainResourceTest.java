@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class VillainResourceTest {
 	
-	// Data
+	/* DATA */
 	private static final String JSON = "application/json;charset=UTF-8";
 
     private static final String DEFAULT_NAME = "Super Chocolatine";
@@ -43,7 +43,15 @@ public class VillainResourceTest {
     private static final int NB_VILLAINS = 581;
     private static String villainId;
     
-    // Tests
+    /* TESTS */
+    @Test
+    void shouldPingOpenAPI() {
+        given()
+            .header(ACCEPT, JSON)
+            .when().get("/q/openapi")
+            .then()
+            .statusCode(OK.getStatusCode());
+    }
 
     @Test
     public void testHelloEndpoint() {
@@ -200,7 +208,7 @@ public class VillainResourceTest {
 
     private TypeRef<List<Villain>> getVillainTypeRef() {
         return new TypeRef<List<Villain>>() {
-            
+            // kept empty on purpose
         };
     }
 
